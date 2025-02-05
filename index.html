@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Calculator</title>
+    <style>
+        body {
+            background-image: url("https://wallpapercave.com/wp/wp4022822.jpg");
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        table {
+            margin: auto;
+            border-collapse: collapse;
+            background-image: url("calsi.jpg");
+            padding: 10px;
+            border: 2px solid papayawhip;
+        }
+        td {
+            padding: 10px;
+        }
+        input {
+            width: 100%;
+            height: 40px;
+            font-size: 36px;
+            text-align: right;
+        }
+        button {
+            width: 50px;
+            height: 50px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        h2{
+            background-color: azure;
+            text-align: center;
+        }
+    </style>
+</head>
+<body bgcolor="green">
+
+    <h2>Calculator for student</h2>
+
+    <table border="1">
+        <tr>
+            <td colspan="4"><input type="text" id="display" disabled></td>
+        </tr>
+        <tr>
+            <td><button onclick="clearDisplay()">C</button></td>
+            <td><button onclick="appendValue('/')">/</button></td>
+            <td><button onclick="appendValue('*')">x</button></td> 
+            <td><button onclick="appendValue('-')">-</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="appendValue('7')">7</button></td>
+            <td><button onclick="appendValue('8')">8</button></td>
+            <td><button onclick="appendValue('9')">9</button></td>
+            <td rowspan="2"><button onclick="appendValue('+')" style="height: 100%;">+</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="appendValue('4')">4</button></td>
+            <td><button onclick="appendValue('5')">5</button></td>
+            <td><button onclick="appendValue('6')">6</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="appendValue('1')">1</button></td>
+            <td><button onclick="appendValue('2')">2</button></td>
+            <td><button onclick="appendValue('3')">3</button></td>
+            <td rowspan="2"><button onclick="calculateResult()" style="height: 100%;">=</button></td>
+        </tr>
+        <tr>
+            <td colspan="2"><button onclick="appendValue('0')" style="width: 100%;">0</button></td>
+            <td><button onclick="appendValue('.')">.</button></td>
+        </tr>
+    </table>
+
+    <script>
+        function appendValue(value) {
+            document.getElementById('display').value += value;
+        }
+
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+        }
+
+        function calculateResult() {
+            try {
+                document.getElementById('display').value = eval(document.getElementById('display').value);
+            } catch (e) {
+                alert("Invalid Expression");
+            }
+        }
+    </script>
+
+</body>
+</html>
